@@ -1924,10 +1924,16 @@ jQuery( "#ebtn__delete" ).mouseup(function() {
 });
 
 jQuery( "#ebtn__dwedit" ).click(function() { 
-   ckgedit_to_dwedit = true;
-   setDWEditCookie(2, this);
+  ckgedit_to_dwedit = true;
+  setDWEditCookie(2, this);
+ if(!window.dwfckTextChanged && JSINFO['cg_rev']) { 
+   ckgedit_dwedit_reject = true;
+   parse_wikitext('ebut_cancel'); 
+ }
+ else {
    parse_wikitext('edbtn__save');
    this.form.submit();
+   }
 });
 
 jQuery("#ebtn__fbswitch").click(function(){
